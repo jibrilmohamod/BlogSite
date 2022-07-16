@@ -1,14 +1,22 @@
 <template>
  <header
-  class="w-full h-20 bg-green-500 flex py-4 px-28 items-center justify-between"
+  class="lg:w-full h-20 bg-green-500 flex flex-col py-4 px-28 items-center justify-between md:flex-row"
  >
-  <h1 class="text-3xl text-white border">VueBlog</h1>
-  <nav class="flex justify-self-end">
-   <router-link to="path" class="cursor-pointer border text-white px-7"
-    ><i class="fas fa-house inline text- border"></i> Home</router-link
+  <h1 class="text-4xl text-white">VueBlog</h1>
+  <nav class="flex flex-col justify-self-end md:flex-row">
+   <router-link to="path" class="cursor-pointer text-white px-7"
+    ><i class="fas fa-house inline text-xl pr-1"></i> Home</router-link
    >
-   <router-link to="path" class="border cursor-pointer text-white px-7"
-    >Login
+   <router-link to="path" class="cursor-pointer text-white px-7"
+    ><i class="text-xl fas fa-photo-film pr-1"></i>Categories
+   </router-link>
+
+   <router-link to="path" class="cursor-pointer text-white px-7"
+    ><i class="text-xl fas fa-user pr-1"></i>Me
+   </router-link>
+
+   <router-link to="path" class="cursor-pointer text-white px-7"
+    ><i class="text-xl fas fas fa-person-walking-arrow-right pr-1"></i>Login
    </router-link>
   </nav>
  </header>
