@@ -1,10 +1,14 @@
 <template>
  <div class="flex justify-center h-[92vh] fon">
   <form
+   @submit.prevent="register"
    class="h-[69vh] w-[40vw] m-auto rounded-xl bg-green-100 p-14 flex flex-col gap-8 justify-center"
   >
    <!-- form lable -->
    <h1 class="text-2xl fon">Registration Form</h1>
+   <p v-if="errorMsg" class="text-red-600">
+    {{ errorMsg }}
+   </p>
 
    <!-- name inputs -->
    <div class="grid grid-cols-2 gap-3">
@@ -136,6 +140,8 @@
 
 <script setup>
  import { ref } from "vue"
+ import { useRouter } from "vue-router"
+ import { supabase } from "../supabase/init"
 
  const fname = ref(null)
  const lname = ref(null)
@@ -145,7 +151,42 @@
  const phoneNo = ref(null)
  const password = ref(null)
  const conf = ref(null)
- const errorMsg = ref(null)
+ const errorMsg = ref("")
+ const router = useRouter()
+
+ //  register function
+
+ const register = async () => {
+  if (password.value === conf.value) {
+   try {
+    const { error } = await supabase.auth.signUp(
+     {
+      email: email.value,
+      password: password.value,
+     },
+     {
+      data: {
+       phone: phoneNo.value,
+       bday: bday.value,
+       name: `${fname.value} ${lname.value}`,
+      },
+     }
+    )
+    if (error) throw error
+    router.push({ name: "home" })
+   } catch (error) {
+    errorMsg.value = error.message
+    setTimeout(() => {
+     errorMsg.value = null
+    }, 5000)
+   }
+   return
+  }
+  errorMsg.value = "Error:Passwords do not match"
+  setTimeout(() => {
+   errorMsg.value = null
+  }, 5000)
+ }
 </script>
 
 <style scoped></style>
