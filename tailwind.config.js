@@ -364,6 +364,7 @@ module.exports = {
     '"Segoe UI Emoji"',
     '"Segoe UI Symbol"',
     '"Noto Color Emoji"',
+    '"Rubik Moonrocks"',
    ],
    serif: [
     "ui-serif",

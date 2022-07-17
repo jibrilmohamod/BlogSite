@@ -2,7 +2,7 @@
  <header
   class="lg:w-full h-[8vh] bg-green-500 flex flex-col py-4 px-28 items-center justify-between md:flex-row"
  >
-  <h1 class="text-4xl text-white">VueBlog</h1>
+  <h1 class="text-4xl text-white font-['Rubik_Moonrocks']">VueBlog</h1>
   <nav class="flex flex-col justify-self-end md:flex-row">
    <router-link to="path" class="cursor-pointer text-white px-7"
     ><i class="fas fa-house inline text-xl pr-1 hover:text-neutral-500"></i>
