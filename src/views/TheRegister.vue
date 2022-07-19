@@ -155,38 +155,6 @@
  const router = useRouter()
 
  //  register function
-
- const register = async () => {
-  if (password.value === conf.value) {
-   try {
-    const { error } = await supabase.auth.signUp(
-     {
-      email: email.value,
-      password: password.value,
-     },
-     {
-      data: {
-       phone: phoneNo.value,
-       bday: bday.value,
-       name: `${fname.value} ${lname.value}`,
-      },
-     }
-    )
-    if (error) throw error
-    router.push({ name: "home" })
-   } catch (error) {
-    errorMsg.value = error.message
-    setTimeout(() => {
-     errorMsg.value = null
-    }, 5000)
-   }
-   return
-  }
-  errorMsg.value = "Error:Passwords do not match"
-  setTimeout(() => {
-   errorMsg.value = null
-  }, 5000)
- }
 </script>
 
 <style scoped></style>
