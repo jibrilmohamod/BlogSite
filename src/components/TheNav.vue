@@ -6,7 +6,7 @@
    >VueBlog</router-link
   >
   <nav class="flex flex-col justify-self-end md:flex-row">
-   <router-link to="path" class="cursor-pointer text-white px-7"
+   <router-link to="/" class="cursor-pointer text-white px-7"
     ><i class="fas fa-house inline text-xl pr-1 hover:text-neutral-500"></i>
     Home</router-link
    >
