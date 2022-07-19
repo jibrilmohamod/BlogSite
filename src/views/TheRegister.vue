@@ -9,14 +9,15 @@
     <h1 class="text-2xl">Sign Up</h1>
 
     <!-- name inputs -->
-    <label for="Name" class="absolute top-[25em]">
+    <label for="username" class="absolute top-[25em]">
      <i class="fas fa-user text-sm"></i>
     </label>
     <input
-     id="name"
+     id="username"
      type="text"
-     class="h-9 placeholder:focus:text-red-500 outline-none border-b border-black w-80 pl-7 text-sm"
-     placeholder="Your Name"
+     class="h-9 placeholder:focus:text-green-400 outline-none border-b border-black w-80 pl-7 text-sm"
+     placeholder="Username"
+     v-model="username"
     />
 
     <!-- email input -->
@@ -26,9 +27,10 @@
     <input
      required
      id="email"
-     type="text"
-     class="h-9 placeholder:focus:text-red-500 outline-none border-b border-black w-80 pl-7 text-sm"
+     type="email"
+     class="h-9 placeholder:focus:text-green-400 outline-none border-b border-black w-80 pl-7 text-sm"
      placeholder="Your Email "
+     v-model="email"
     />
 
     <!-- password  -->
@@ -40,21 +42,23 @@
      required
      id="password"
      type="password"
-     class="h-9 placeholder:focus:text-red-500 outline-none border-b border-black w-80 pl-7 text-sm"
+     class="h-9 placeholder:focus:text-green-400 outline-none border-b border-black w-80 pl-7 text-sm"
      placeholder="Password "
+     v-model="password"
     />
 
     <!-- confirm password -->
 
-    <label for="Name" class="absolute top-[42em] -mt-1 text-sm">
+    <label for="conf" class="absolute top-[42em] -mt-1 text-sm">
      <i class="fas fa-lock"></i>
     </label>
     <input
      required
-     id="password"
+     id="conf"
      type="password"
-     class="h-9 placeholder:focus:text-red-500 outline-none border-b border-black w-80 pl-7 text-sm"
+     class="h-9 placeholder:focus:text-green-400 outline-none border-b border-black w-80 pl-7 text-sm"
      placeholder="Confirm Password"
+     v-model="conf"
     />
    </div>
 
@@ -64,19 +68,14 @@
 </template>
 
 <script setup>
- //  import { ref } from "vue"
- //  import { useRouter } from "vue-router"
+ import { ref } from "vue"
+ import { useRouter } from "vue-router"
 
- //  const fname = ref(null)
- //  const lname = ref(null)
- //  const bday = ref(Date)
- //  const gender = ref(null)
- //  const email = ref(null)
- //  const phoneNo = ref(null)
- //  const password = ref(null)
- //  const conf = ref(null)
- //  const errorMsg = ref("")
- //  const router = useRouter()
+ const email = ref(null)
+ const password = ref(null)
+ const username = ref("")
+ const conf = ref(null)
+ const router = useRouter()
 
  //  register function
 </script>
