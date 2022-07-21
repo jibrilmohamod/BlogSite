@@ -64,7 +64,7 @@
     <!-- submit button  -->
     <button
      type="submit"
-     class="place-self-start h-12 w-32 border hover:bg-green-400 hover:text-white"
+     class="place-self-start h-12 w-32 border hover:bg-green-400 hover:text-white hover:duration-150"
     >
      Sign Up
     </button>
