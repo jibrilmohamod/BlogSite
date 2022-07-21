@@ -1,5 +1,6 @@
 <template>
  <div class="flex justify-center h-[92vh] fon">
+  {{ errorMsg }}
   <form
    @submit.prevent="register"
    class="h-[50vh] w-[50vw] m-auto rounded-xl p-14 grid-cols-2 gap-2"
@@ -84,16 +85,41 @@
 </template>
 
 <script setup>
- import { ref } from "vue"
+ import axios from "axios";
+import { ref } from "vue"
+ import { useRouter } from "vue-router"
  //  import { useRouter } from "vue-router"
 
  const email = ref(null)
  const password = ref(null)
  const username = ref("")
  const conf = ref(null)
- //  const router = useRouter()
+ let errorMsg = ref(null)
+ let jwt = ref(null)
+ const router = useRouter()
 
  //  register function
+
+ const register = async () => {
+  axios.post('https://blogpa.herokuapp.com/api/auth/local/register', {
+   username: username.value,
+   email: email.value,
+   password: password.value,
+   confirmPassword: conf.value
+  })
+   .then(res => {
+    console.log(res)
+    jwt = res.data.jwt
+    localStorage.setItem("jwt", jwt)
+    router.push("/")
+   })
+   .catch(err => {
+    let {request} = err
+    let {response} = request
+    let {data} = response
+    console.log(data)    
+   })
+ }
 </script>
 
 <style scoped>
