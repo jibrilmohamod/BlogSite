@@ -82,6 +82,7 @@
    </div>
   </form>
  </div>
+ {{username}}
 </template>
 
 <script setup>
