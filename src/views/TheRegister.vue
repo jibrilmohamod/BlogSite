@@ -82,7 +82,6 @@
    </div>
   </form>
  </div>
- {{username}}
 </template>
 
 <script setup>
@@ -95,32 +94,36 @@ import { ref } from "vue"
  const password = ref(null)
  const username = ref("")
  const conf = ref(null)
- let errorMsg = ref(null)
+ let errorMsg = ref('')
  let jwt = ref(null)
  const router = useRouter()
 
  //  register function
 
  const register = async () => {
-  axios.post('https://blogpa.herokuapp.com/api/auth/local/register', {
-   username: username.value,
-   email: email.value,
-   password: password.value,
-   confirmPassword: conf.value
-  })
-   .then(res => {
-    console.log(res)
-    jwt = res.data.jwt
-    localStorage.setItem("jwt", jwt)
-    router.push("/")
-   })
-   .catch(err => {
-    let {request} = err
-    let {response} = request
-    let {data} = response
-    console.log(data)    
-   })
- }
+  if (password.value === conf.value) {
+     try {
+      const { res } = await axios.post('https://blogpa.herokuapp.com/api/auth/local/register',{
+       email: email.value,
+       password: password.value,
+       username: username.value
+
+      })
+      jwt.value = res.data.jwt
+      router.push({ name: "login" })
+     } catch (error) {
+      errorMsg.value = error.message
+      setTimeout(() => {
+       errorMsg.value = null
+      }, 5000)
+     }
+     return
+    }
+    errorMsg.value = "Error:Passwords do not match"
+    setTimeout(() => {
+     errorMsg.value = null
+    }, 5000)
+   }
 </script>
 
 <style scoped>
